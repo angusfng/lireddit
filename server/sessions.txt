@@ -1,0 +1,25 @@
+How do sessions work
+
+Remember redis is a key value pair database
+
+req.session.userId = user.id
+
+1.
+Inside redis Key -> value mapping
+sess:fjesoifj -> { userId : 1 }
+
+2.
+Express session will set a cookie on browser 908t90df8ds
+This cookie is a encrypted versyon of the redis key
+Cookie is in the browser
+
+3.
+User makes a request -> cookie value is sent to server
+
+4.
+On the server, cookie value is decrypted using secret, turns into redis key
+908t90df8ds -> sess:fjesoifj
+
+5.
+Make a request to redis and get the value
+
